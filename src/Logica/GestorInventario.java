@@ -13,6 +13,7 @@ public class GestorInventario {
         this.productos = productos;
     }
     public void agnadirProducto(Producto producto) {
+
         productos.add(producto);
         Utilidades.mostrar("Agnadido producto con id: "+producto.getId());
     }
@@ -53,5 +54,35 @@ public class GestorInventario {
             }
             Utilidades.mostrar("--- Se han mostrado "+productos.size()+" productos ---");
         }
+    }
+
+    public void actualizarStock(int id, int stockNuevo) {
+        buscarPorId(id).setStock(stockNuevo);
+    }
+
+    public void actualizarPrecio(int id, int precioNuevo) {
+        buscarPorId(id).setPrecio(precioNuevo);
+    }
+
+    public void actualizarNombre(int id, String nombreNuevo) {
+        Producto producto = buscarPorId(id);
+        for (Producto p : productos) {
+            if (p.getNombre().equals(nombreNuevo) && p.getCategoria().equals(producto.getCategoria())) {
+                Utilidades.mostrar("Ya existe el producto con ese nombre con id: "+p.getId());
+                break;
+            }
+        }
+        producto.setNombre(nombreNuevo);
+    }
+
+    public void actualizarCategoria(int id, Categoria categoriaNueva) {
+        Producto producto = buscarPorId(id);
+        for (Producto p : productos) {
+            if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(categoriaNueva)) {
+                Utilidades.mostrar("Ya existe el producto con esa categoria con id: "+p.getId());
+                break;
+            }
+        }
+        producto.setCategoria(categoriaNueva);
     }
 }
