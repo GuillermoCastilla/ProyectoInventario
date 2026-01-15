@@ -17,12 +17,15 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
+        this.id = ++contador;
     }
 
     //Getters/Setters(hasta linea 57)
+
     public int getId(){
         return this.id;
     }
+
 
     public double getPrecio() {
         return precio;
@@ -56,9 +59,10 @@ public class Producto {
         return contador;
     }
 
+
     //Mostrar los detalles
     public String toString(){
-        String detalles = (getNombre() + "|" + getPrecio() + "|" + getStock() + "|" + getCategoria());
+        String detalles = (getId() + "|" +getNombre() + "|" + getPrecio() + "|" + getStock() + "|" + getCategoria());
         return detalles;
     }
 }
