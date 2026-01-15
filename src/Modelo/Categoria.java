@@ -1,4 +1,5 @@
 package Modelo;
 
-public class Categoria {
+public enum Categoria {
+    ELECTRONICAS, ALIMENTACION, HOGAR, OTROS
 }
