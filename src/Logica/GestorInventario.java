@@ -8,13 +8,22 @@ import java.util.ArrayList;
 
 public class GestorInventario {
     private final Utilidades u = new Utilidades();
+    private Producto product;
     private ArrayList<Producto> productos = new ArrayList<>();
 
     public GestorInventario(ArrayList<Producto> productos) {
         this.productos = productos;
     }
     public void agnadirProducto(Producto producto) {
-        productos.add(producto);
+        if (!productos.isEmpty()) {
+            for (int i = 0; i < productos.size(); i++) {
+                if (productos.get(i).getNombre().equals(producto.getNombre()) && productos.get(i).getPrecio() == producto.getPrecio() && productos.get(i).getCategoria() == producto.getCategoria()) {
+                    actualizarStock(producto);
+                }
+            }
+        }else{
+            productos.add(producto);
+        }
     }
 
     public Producto buscarPorId(int id) {
@@ -53,4 +62,15 @@ public class GestorInventario {
         }
     }
 
+    public void actualizarStock(Producto producto){
+        if (!productos.isEmpty()){
+            for (int i = 0; i<productos.size(); i++) {
+                if (productos.get(i).getNombre().equals(producto.getNombre()) && productos.get(i).getPrecio() == producto.getPrecio() && productos.get(i).getCategoria() == producto.getCategoria()){
+                    productos.get(i).setStock(productos.get(i).getStock()+1);
+                }
+            }
+        }else{
+            System.out.println("Debe primero añadir un producto.");
+        }
+    }
 }
