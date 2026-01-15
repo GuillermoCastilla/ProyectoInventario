@@ -14,6 +14,7 @@ public class GestorInventario {
     }
     public void agnadirProducto(Producto producto) {
         productos.add(producto);
+        Utilidades.mostrar("Agnadido producto con id: "+producto.getId());
     }
 
     public Producto buscarPorId(int id) {
@@ -22,6 +23,7 @@ public class GestorInventario {
                 return productos.get(i);
             }
         }
+        Utilidades.mostrar("No existe el producto con id: "+id);
         return null;
     }
 
@@ -35,6 +37,7 @@ public class GestorInventario {
         }
 
         // 3. Si existe, lo borramos usando la variable que ya tiene el objeto
+        Utilidades.mostrar("Eliminando producto: "+id);
         productos.remove(encontrado);
         return true;
     }
@@ -51,5 +54,4 @@ public class GestorInventario {
             Utilidades.mostrar("--- Se han mostrado "+productos.size()+" productos ---");
         }
     }
-
 }
