@@ -8,17 +8,17 @@ public class Utilidades {
 
     public Utilidades() {}
 
-    public void mostrar(String texto) {
+    public static void mostrar(String texto) {
         System.out.println(texto);
     }
-    public void mostrar(int numero) {
+    public static void mostrar(int numero) {
         System.out.println(numero);
     }
-    public void mostrar(float numero) {
+    public static void mostrar(float numero) {
         System.out.println(numero);
     }
 
-    public String pedirPalabra(String texto) {
+    public static String pedirPalabra(String texto) {
         String valor;
         do{
             mostrar(texto);
@@ -32,7 +32,7 @@ public class Utilidades {
         return valor;
     }
 
-    public double pedirValoresD(String texto) {
+    public static double pedirValoresD(String texto) {
         double valor;
         do{
             mostrar(texto);
@@ -46,7 +46,7 @@ public class Utilidades {
         return valor;
     }
 
-    public int pedirValores(String texto) {
+    public static int pedirValores(String texto) {
         int valor;
         do{
             mostrar(texto);
@@ -66,7 +66,7 @@ public class Utilidades {
         return sc.nextDouble();
     }*/
 
-    public int pedirValores(String texto, int max) {
+    public static int pedirValores(String texto, int max) {
         int valor;
 
         do {
@@ -76,7 +76,7 @@ public class Utilidades {
         return valor;
     }
 
-    public int pedirValores(String texto, int max, int min) {
+    public static int pedirValores(String texto, int max, int min) {
         int valor;
 
         do {
@@ -89,7 +89,7 @@ public class Utilidades {
 
     }
 
-    public int pedirValores(int min, String texto) {
+    public static int pedirValores(int min, String texto) {
         int valor = 0;
 
         do {
