@@ -14,8 +14,22 @@ public class GestorInventario {
         this.productos = productos;
     }
     public void agnadirProducto(Producto producto) {
-        productos.add(producto);
-        Utilidades.mostrar("Agnadido producto con id: "+producto.getId());
+        if (!productos.isEmpty()) {
+            for (Producto p : productos) {
+                if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(producto.getCategoria())) {
+                    System.out.println("ERROR: producto ya existente");
+                    prueba = false;
+                    break;
+                } else {
+                    prueba = true;
+                }
+            }
+            if (prueba) {
+                productos.add(producto);
+            }
+        }else{
+            productos.add(producto);
+        }
     }
 
     public Producto buscarPorId(int id) {
