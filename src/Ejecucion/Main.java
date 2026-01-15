@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Producto> productos = new ArrayList<>();
-        GestorInventario gestor = new GestorInventario(productos);
-        Menu menu = new Menu(gestor);
+        Menu menu = new Menu(new GestorInventario(new ArrayList<Producto>()));
         menu.menu(menu.opcion());
 
     }
