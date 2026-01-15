@@ -7,7 +7,6 @@ import Utilidades.Utilidades;
 import java.util.ArrayList;
 
 public class GestorInventario {
-    private final Utilidades u = new Utilidades();
     private ArrayList<Producto> productos = new ArrayList<>();
 
     public GestorInventario(ArrayList<Producto> productos) {
@@ -42,14 +41,14 @@ public class GestorInventario {
 
     public void mostrarTodo(){
         if (productos.isEmpty()){
-            u.mostrar("El inventario está vacío actualmente");
+            Utilidades.mostrar("El inventario está vacío actualmente");
         }
         else {
-            u.mostrar("--- LISTA DE PRODUCTOS EN STOCK ---");
+            Utilidades.mostrar("--- LISTA DE PRODUCTOS EN STOCK ---");
             for (int i = 0; i<productos.size(); i++) {
-                u.mostrar(productos.get(i).toString());
+                Utilidades.mostrar(productos.get(i).toString());
             }
-            u.mostrar("--- Se han mostrado "+productos.size()+" productos ---");
+            Utilidades.mostrar("--- Se han mostrado "+productos.size()+" productos ---");
         }
     }
 
