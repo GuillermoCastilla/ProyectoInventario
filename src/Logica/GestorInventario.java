@@ -54,4 +54,40 @@ public class GestorInventario {
             Utilidades.mostrar("--- Se han mostrado "+productos.size()+" productos ---");
         }
     }
+
+    public void actualizarStock(int id, int stockNuevo) {
+        buscarPorId(id).setStock(stockNuevo);
+    }
+
+    public void actualizarPrecio(int id, double precioNuevo) {
+        buscarPorId(id).setPrecio(precioNuevo);
+    }
+
+    public void actualizarNombre(int id, String nombreNuevo) {
+        Producto producto = buscarPorId(id);
+        for (Producto p : productos) {
+            if (p.getNombre().equals(nombreNuevo) && p.getCategoria().equals(producto.getCategoria())) {
+                Utilidades.mostrar("Ya existe un producto con ese nombre con id: "+p.getId());
+                break;
+            }
+            else  {
+                producto.setNombre(nombreNuevo);
+                break;
+            }
+        }
+    }
+
+    public void actualizarCategoria(int id, Categoria categoriaNueva) {
+        Producto producto = buscarPorId(id);
+        for (Producto p : productos) {
+            if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(categoriaNueva)) {
+                Utilidades.mostrar("Ya existe un producto con esa categoria con id: "+p.getId());
+                break;
+            }
+            else  {
+                producto.setCategoria(categoriaNueva);
+                break;
+            }
+        }
+    }
 }
