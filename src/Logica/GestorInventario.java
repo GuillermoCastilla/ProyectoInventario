@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class GestorInventario {
     private ArrayList<Producto> productos = new ArrayList<>();
+    private boolean prueba;
 
     public GestorInventario(ArrayList<Producto> productos) {
         this.productos = productos;
@@ -68,12 +69,16 @@ public class GestorInventario {
         for (Producto p : productos) {
             if (p.getNombre().equals(nombreNuevo) && p.getCategoria().equals(producto.getCategoria())) {
                 Utilidades.mostrar("Ya existe un producto con ese nombre con id: "+p.getId());
+                prueba = false;
                 break;
             }
             else  {
-                producto.setNombre(nombreNuevo);
-                break;
+                prueba = true;
+
             }
+        }
+        if (prueba){
+            producto.setNombre(nombreNuevo);
         }
     }
 
@@ -82,12 +87,15 @@ public class GestorInventario {
         for (Producto p : productos) {
             if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(categoriaNueva)) {
                 Utilidades.mostrar("Ya existe un producto con esa categoria con id: "+p.getId());
+                prueba = false;
                 break;
             }
             else  {
-                producto.setCategoria(categoriaNueva);
-                break;
+                prueba = true;
             }
+        }
+        if (prueba){
+            producto.setCategoria(categoriaNueva);
         }
     }
 }
