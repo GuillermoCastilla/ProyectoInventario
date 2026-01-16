@@ -42,6 +42,13 @@ public class GestorInventario {
         return null;
     }
 
+    public void mostrarProducto(int id) {
+        Producto producto = buscarPorId(id);
+        if (producto != null) {
+            Utilidades.mostrar(producto.toString());
+        }
+    }
+
     public boolean eliminarProducto(int id) {
         // 1. Buscamos el producto UNA SOLA VEZ y lo guardamos en una variable
         Producto encontrado = buscarPorId(id);
@@ -71,45 +78,56 @@ public class GestorInventario {
     }
 
     public void actualizarStock(int id, int stockNuevo) {
-        buscarPorId(id).setStock(stockNuevo);
+        Producto producto = buscarPorId(id);
+        if (producto != null){
+            producto.setStock(stockNuevo);
+        }
     }
 
     public void actualizarPrecio(int id, double precioNuevo) {
-        buscarPorId(id).setPrecio(precioNuevo);
+        Producto producto = buscarPorId(id);
+        if (producto != null) {
+            producto.setPrecio(precioNuevo);
+        }
     }
 
     public void actualizarNombre(int id, String nombreNuevo) {
         Producto producto = buscarPorId(id);
-        for (Producto p : productos) {
-            if (p.getNombre().equals(nombreNuevo) && p.getCategoria().equals(producto.getCategoria())) {
-                Utilidades.mostrar("Ya existe un producto con ese nombre con id: "+p.getId());
-                prueba = false;
-                break;
-            }
-            else  {
-                prueba = true;
+        if (producto != null){
+            for (Producto p : productos) {
+                if (p.getNombre().equals(nombreNuevo) && p.getCategoria().equals(producto.getCategoria())) {
+                    Utilidades.mostrar("Ya existe un producto con ese nombre con id: "+p.getId());
+                    prueba = false;
+                    break;
+                }
+                else  {
+                    prueba = true;
 
+                }
+            }
+            if (prueba){
+                producto.setNombre(nombreNuevo);
             }
         }
-        if (prueba){
-            producto.setNombre(nombreNuevo);
-        }
+
     }
 
     public void actualizarCategoria(int id, Categoria categoriaNueva) {
         Producto producto = buscarPorId(id);
-        for (Producto p : productos) {
-            if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(categoriaNueva)) {
-                Utilidades.mostrar("Ya existe un producto con esa categoria con id: "+p.getId());
-                prueba = false;
-                break;
+        if (producto!=null){
+            for (Producto p : productos) {
+                if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(categoriaNueva)) {
+                    Utilidades.mostrar("Ya existe un producto con esa categoria con id: "+p.getId());
+                    prueba = false;
+                    break;
+                }
+                else  {
+                    prueba = true;
+                }
             }
-            else  {
-                prueba = true;
+            if (prueba){
+                producto.setCategoria(categoriaNueva);
             }
-        }
-        if (prueba){
-            producto.setCategoria(categoriaNueva);
         }
     }
 }
