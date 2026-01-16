@@ -2,6 +2,8 @@ package Modelo;
 
 import Utilidades.Utilidades;
 
+import java.util.ArrayList;
+
 public class Producto {
     private int id;
     private String nombre;
@@ -22,6 +24,14 @@ public class Producto {
         this.id = ++contador;
     }
 
+    //Constructor GestorFicheros
+    public Producto(int id, String nombre, double precio, int stock, Categoria categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.categoria = categoria;
+    }
     //Getters/Setters(hasta linea 57)
 
     public int getId(){
@@ -59,6 +69,15 @@ public class Producto {
     }
     public static int getContador() {
         return contador;
+    }
+
+    public void actualizarContador(ArrayList<Producto> producto) {
+        try{
+            this.id = producto.getLast().getId();
+        }catch(Exception e){
+            Utilidades.mostrar("ERROR." + e.getMessage());
+        }
+
     }
 
 
