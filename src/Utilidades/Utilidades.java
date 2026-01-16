@@ -43,6 +43,7 @@ public class Utilidades {
                 valor = -123456789;
             }
         } while (valor ==-123456789);
+        sc.nextLine();
         return valor;
     }
 
@@ -57,6 +58,7 @@ public class Utilidades {
                 valor = -123456789;
             }
         } while (valor ==-123456789);
+        sc.nextLine();
         return valor;
     }
 
@@ -71,8 +73,14 @@ public class Utilidades {
 
         do {
             mostrar(texto);
-            valor = sc.nextInt();
-        } while (valor > max);
+            try {
+                valor = sc.nextInt();
+            } catch (Exception e) {
+                sc.nextLine();
+                valor = -123456789;
+            }
+        } while (valor > max || (valor == -123456789));
+        sc.nextLine();
         return valor;
     }
 
@@ -81,10 +89,14 @@ public class Utilidades {
 
         do {
             mostrar(texto);
-            valor = sc.nextInt();
-
-        } while (valor > max || valor < min);
-
+            try {
+                valor = sc.nextInt();
+            } catch (Exception e) {
+                sc.nextLine();
+                valor = -123456789;
+            }
+        } while (valor > max || valor < min || (valor == -123456789));
+        sc.nextLine();
         return valor;
 
     }
@@ -94,9 +106,14 @@ public class Utilidades {
 
         do {
             mostrar(texto);
-            valor = sc.nextInt();
-
-        } while (valor < min);
+            try {
+                valor = sc.nextInt();
+            } catch (Exception e) {
+                sc.nextLine();
+                valor = -123456789;
+            }
+        } while (valor < min || (valor == -123456789));
+        sc.nextLine();
         return valor;
     }
 }
