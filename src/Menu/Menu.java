@@ -49,21 +49,31 @@ public class Menu {
 
 
 
-    public void menu(int opcion){
-        switch (opcion){
-            case 1:
-                gestor.buscarPorId(Utilidades.pedirValores("Introduzca el ID del producto"));
-            case 2:
-                gestor.agnadirProducto(new Producto(Utilidades.pedirPalabra("Introduzca el nombre del producto"),
-                                                    Utilidades.pedirValoresD("Introduzca el precio del producto"),
-                                                    Utilidades.pedirValores("Introduzca la cantidad de stock del producto"),
-                                                    menuCategoria(opcionCategoria())));
-            case 3:
-                gestor.eliminarProducto(Utilidades.pedirValores("Introduzca el ID del producto"));
-            case 4:
-                gestor.mostrarTodo();
-            default:
-                break;
-        }
+    public void menu(){
+        int opcion;
+        do {
+            opcion = opcion();
+            switch (opcion){
+                case 1:
+                    gestor.mostrarProducto(Utilidades.pedirValores("Introduzca el ID del producto"));
+                    break;
+                case 2:
+                    gestor.agnadirProducto(new Producto(
+                            Utilidades.pedirPalabra("Introduzca el nombre del producto"),
+                            Utilidades.pedirValoresD("Introduzca el precio del producto"),
+                            Utilidades.pedirValores("Introduzca la cantidad de stock del producto"),
+                            menuCategoria(opcionCategoria())));
+                    break;
+                case 3:
+                    gestor.eliminarProducto(Utilidades.pedirValores("Introduzca el ID del producto"));
+                    break;
+                case 4:
+                    gestor.mostrarTodo();
+                    break;
+                default:
+                    Utilidades.mostrar("Saliendo del programa.");
+                    break;
+            }
+        } while (opcion != 5);
     }
 }
