@@ -50,7 +50,7 @@ public class Menu {
 
 
     public static ArrayList<Producto> menu(GestorInventario gestorInventario){
-        //gestor = gestorInventario;
+        gestor = gestorInventario;
         int opcion;
         do {
             opcion = opcion();
