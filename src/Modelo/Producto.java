@@ -80,6 +80,10 @@ public class Producto {
 
     }
 
+    public static void setContador(int nuevoValor){
+        contador = nuevoValor;
+    }
+
 
     //Mostrar los detalles
     public String toString(){

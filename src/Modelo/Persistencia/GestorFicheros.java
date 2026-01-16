@@ -34,6 +34,9 @@ public class GestorFicheros {
             productos.add(new Producto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]), Integer.parseInt(partes[3]), conversionCategoria(partes[4])));
         }
         //Producto producto
+        if (!productos.isEmpty()){
+            Producto.setContador(productos.get(productos.size()-1).getId());
+        }
         return productos;
     }
     public static void escribirFichero(ArrayList<Producto> productos) {
