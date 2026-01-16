@@ -1,5 +1,7 @@
 package Modelo;
 
+import Utilidades.Utilidades;
+
 public class Producto {
     private int id;
     private String nombre;
@@ -62,7 +64,7 @@ public class Producto {
 
     //Mostrar los detalles
     public String toString(){
-        String detalles = (getId() + "|" +getNombre() + "|" + getPrecio() + "|" + getStock() + "|" + getCategoria());
+        String detalles = (getId() + "|" +getNombre() + "|" + Math.abs(getPrecio()) + "|" + Math.abs(getStock()) + "|" + getCategoria());
         return detalles;
     }
 }
