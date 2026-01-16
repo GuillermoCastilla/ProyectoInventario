@@ -128,4 +128,8 @@ public class GestorInventario {
             }
         }
     }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
 }
