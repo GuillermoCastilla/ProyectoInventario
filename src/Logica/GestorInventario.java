@@ -128,10 +128,4 @@ public class GestorInventario {
             }
         }
     }
-
-    public void actualizarContador(){
-        for (Producto p : productos ){
-
-        }
-    }
 }

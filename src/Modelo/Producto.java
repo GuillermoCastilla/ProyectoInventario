@@ -2,6 +2,8 @@ package Modelo;
 
 import Utilidades.Utilidades;
 
+import java.util.ArrayList;
+
 public class Producto {
     private int id;
     private String nombre;
@@ -59,6 +61,15 @@ public class Producto {
     }
     public static int getContador() {
         return contador;
+    }
+
+    public void actualizarContador(ArrayList<Producto> producto) {
+        try{
+            this.id = producto.getLast().getId();
+        }catch(Exception e){
+            Utilidades.mostrar("ERROR." + e.getMessage());
+        }
+
     }
 
 
