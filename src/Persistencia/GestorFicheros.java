@@ -18,5 +18,8 @@ public class GestorFicheros {
             Utilidades.mostrar("Error al escribir el fichero");
         }
     }
+    public void p(){
+
+    }
 
 }

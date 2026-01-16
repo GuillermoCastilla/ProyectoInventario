@@ -24,6 +24,14 @@ public class Producto {
         this.id = ++contador;
     }
 
+    //Constructor GestorFicheros
+    public Producto(int id, String nombre, double precio, int stock, Categoria categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.categoria = categoria;
+    }
     //Getters/Setters(hasta linea 57)
 
     public int getId(){
