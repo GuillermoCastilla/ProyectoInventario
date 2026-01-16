@@ -102,14 +102,12 @@ public class GestorInventario {
                 }
                 else  {
                     prueba = true;
-
                 }
             }
             if (prueba){
                 producto.setNombre(nombreNuevo);
             }
         }
-
     }
 
     public void actualizarCategoria(int id, Categoria categoriaNueva) {
@@ -128,6 +126,12 @@ public class GestorInventario {
             if (prueba){
                 producto.setCategoria(categoriaNueva);
             }
+        }
+    }
+
+    public void actualizarContador(){
+        for (Producto p : productos ){
+
         }
     }
 }

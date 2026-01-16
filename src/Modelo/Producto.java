@@ -67,4 +67,9 @@ public class Producto {
         String detalles = (getId() + "|" +getNombre() + "|" + Math.abs(getPrecio()) + "|" + Math.abs(getStock()) + "|" + getCategoria());
         return detalles;
     }
+
+    public String toCSV(){
+        String detalles = (getId() + ";" +getNombre() + ";" + Math.abs(getPrecio()) + ";" + Math.abs(getStock()) + ";" + getCategoria());
+        return detalles;
+    }
 }
