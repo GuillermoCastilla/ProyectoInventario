@@ -23,6 +23,7 @@ public class GestorFicheros {
             return Categoria.OTROS;
         }
     }
+
     public ArrayList<Producto> cargar(String archivo) throws IOException {
         BufferedReader bReader = new BufferedReader(new FileReader(archivo));
         String linea;
@@ -31,12 +32,13 @@ public class GestorFicheros {
 
         while ((linea = bReader.readLine()) !=null){
             partes = linea.split(";");
-            //productos.add(new Producto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]), Integer.parseInt(partes[3]), conversionCategoria(partes[4])));
+            productos.add(new Producto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]), Integer.parseInt(partes[3]), conversionCategoria(partes[4])));
         }
         return productos;
     }
+
     public void escribirFichero(ArrayList<Producto> productos) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("Inventario.csv"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("Inventario.csv", true))){
             for (Producto p : productos) {
                 writer.write(p.toCSV());
                 writer.newLine();
@@ -45,5 +47,4 @@ public class GestorFicheros {
             Utilidades.mostrar("Error al escribir el fichero");
         }
     }
-
 }
