@@ -14,22 +14,14 @@ public class GestorInventario {
         this.productos = productos;
     }
     public void agnadirProducto(Producto producto) {
-        if (!productos.isEmpty()) {
-            for (Producto p : productos) {
-                if (p.getNombre().equals(producto.getNombre()) && p.getCategoria().equals(producto.getCategoria())) {
-                    System.out.println("ERROR: producto ya existente");
-                    prueba = false;
-                    break;
-                } else {
-                    prueba = true;
-                }
+        for (Producto p : productos) {
+            if (p.getNombre().equalsIgnoreCase(producto.getNombre()) &&
+                    p.getCategoria().equals(producto.getCategoria())) {
+                Utilidades.mostrar("ERROR: producto ya existente");
+                return;
             }
-            if (prueba) {
-                productos.add(producto);
-            }
-        }else{
-            productos.add(producto);
         }
+        productos.add(producto);
     }
 
     public Producto buscarPorId(int id) {
