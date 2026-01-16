@@ -8,12 +8,12 @@ import Utilidades.Utilidades;
 import java.util.ArrayList;
 
 public class Menu {
-    private GestorInventario gestor;
+    private static GestorInventario gestor;
     public Menu(GestorInventario gestor) {
         this.gestor = gestor;
     }
 
-    public int opcionCategoria(){
+    private static int opcionCategoria(){
         return Utilidades.pedirValores("""
             --- Seleccion una categoria de producto ---
             1. Electrónica
@@ -22,7 +22,7 @@ public class Menu {
             4. Otros""", 4,1);
     }
 
-    public Categoria menuCategoria(int categoria){
+    private static Categoria menuCategoria(int categoria){
         switch(categoria){
             case 1:
                 return Categoria.ELECTRONICAS;
@@ -37,7 +37,7 @@ public class Menu {
         }
     }
 
-    public int opcion(){
+    private static int opcion(){
         return Utilidades.pedirValores("""
             --- Seleccione una opcion ---
             1. Buscar por ID
@@ -49,7 +49,7 @@ public class Menu {
 
 
 
-    public void menu(){
+    public static ArrayList<Producto> menu(GestorInventario gestorInventario){
         int opcion;
         do {
             opcion = opcion();
@@ -75,5 +75,6 @@ public class Menu {
                     break;
             }
         } while (opcion != 5);
+        return gestor.getProductos();
     }
 }

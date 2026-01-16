@@ -1,4 +1,4 @@
-package Persistencia;
+package Modelo.Persistencia;
 
 import Modelo.Categoria;
 import Modelo.Producto;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class GestorFicheros {
 
-    public Categoria conversionCategoria(String categoria){
+    private static Categoria conversionCategoria(String categoria){
         if (categoria.equals("ELECTRONICAS")){
             return Categoria.ELECTRONICAS;
         }
@@ -23,22 +23,21 @@ public class GestorFicheros {
             return Categoria.OTROS;
         }
     }
-
-    public ArrayList<Producto> cargar(String archivo) throws IOException {
+    public static ArrayList<Producto> cargar(String archivo) throws IOException {
         BufferedReader bReader = new BufferedReader(new FileReader(archivo));
         String linea;
-        String[] partes = new String[5];
+        String[] partes;
         ArrayList <Producto> productos = new ArrayList<>();
 
         while ((linea = bReader.readLine()) !=null){
             partes = linea.split(";");
             productos.add(new Producto(Integer.parseInt(partes[0]), partes[1], Double.parseDouble(partes[2]), Integer.parseInt(partes[3]), conversionCategoria(partes[4])));
         }
+        //Producto producto
         return productos;
     }
-
-    public void escribirFichero(ArrayList<Producto> productos) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("Inventario.csv", true))){
+    public static void escribirFichero(ArrayList<Producto> productos) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("Inventario.csv"))){
             for (Producto p : productos) {
                 writer.write(p.toCSV());
                 writer.newLine();
